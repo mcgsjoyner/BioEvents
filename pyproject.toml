@@ -1,0 +1,42 @@
+[project]
+name = "bioevents"
+version = "0.1.0"
+description = "A lightweight library for managing and manipulating time series events, with a focus on biosensing applications."
+authors = [
+    {name = "McGregor Joyner", email = "mcgsjoyner@gmail.com"},
+]
+dependencies = [
+    "setuptools>=68.2.0",
+    "matplotlib>=3.7.2",
+    "numpy>=1.25.2",
+    "pandas>=2.0.3",
+    "pydantic>=2.1.1",
+    "seaborn>=0.12.2",  # TODO: remove!
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "MIT license"}
+keywords = [
+    "bioevents",
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+]
+
+[project.urls]
+Homepage = "https://github.com/mcgsjoyner/bioevents"
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=7.4.2",
+]
