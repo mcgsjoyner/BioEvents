@@ -14,7 +14,7 @@ dependencies = [
     "seaborn>=0.12.2",  # TODO: remove!
 ]
 requires-python = ">=3.9"
-readme = "README.md"
+readme = "README.rst"
 license = {text = "MIT license"}
 keywords = [
     "bioevents",
@@ -25,9 +25,9 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
 ]
 
 [project.urls]
@@ -39,4 +39,16 @@ build-backend = "pdm.backend"
 [tool.pdm.dev-dependencies]
 test = [
     "pytest>=7.4.2",
+]
+dev = [
+    "tox-pdm>=0.7.0",
+    "pip==19.2.3",
+    "bump2version==0.5.11",
+    "wheel==0.33.6",
+    "watchdog==0.9.0",
+    "flake8==3.7.8",
+    "coverage==4.5.4",
+    "Sphinx==1.8.5",
+    "twine==1.14.0",
+    "black>=21.7b0",
 ]

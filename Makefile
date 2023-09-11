@@ -80,6 +80,12 @@ servedocs: docs ## compile the docs watching for changes
 release: dist ## package and upload a release
 	twine upload dist/*
 
-install: clean ## install the package to the active Python's site-packages
+install-pdm: ## install pdm (https://pdm.fming.dev/latest/) as package manager
 	pip install pdm
+	pdm self add --pip-args=--user pdm-bump
+
+install: clean install-pdm ## install the package to the active Python's site-packages
 	pdm install
+
+install-dev: clean install-pdm ## install with dev dependencies
+	pdm install --dev
