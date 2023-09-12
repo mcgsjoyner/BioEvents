@@ -38,14 +38,19 @@ Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl -OJL https://github.com/mcgsjoyner/bioevents/tarball/master
+    $ curl -OJL https://github.com/mcgsjoyner/bioevents/tarball/main
 
 Once you have a copy of the source, you can install it with:
 
 .. code-block:: console
 
-    $ python setup.py install
+    $ make install
 
+To access development tools, use:
+
+.. code-block:: console
+
+    $ make install-dev
 
 .. _Github repo: https://github.com/mcgsjoyner/bioevents
-.. _tarball: https://github.com/mcgsjoyner/bioevents/tarball/master
+.. _tarball: https://github.com/mcgsjoyner/bioevents/tarball/main
