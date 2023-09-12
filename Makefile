@@ -87,7 +87,9 @@ install: clean ## install using pdm (https://pdm.fming.dev/latest/) as package m
 	pip install pdm
 	pdm install
 
+
 install-dev: clean ## install with dev dependencies
 	pip install pdm
 	pdm install --dev
 	pre-commit install
+	pip-compile pyproject.toml --output-file=docs/requirements.txt
