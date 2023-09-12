@@ -174,6 +174,7 @@ class Event:
         return True
 
     def abuts(self, other):
+        """Determines whether the onset of one event is the offset of the other"""
         return self.on == other.off or self.off == other.on
 
 
@@ -292,6 +293,7 @@ class EventSeries(list):
 
     def __or__(self, item):
         """Defines built-in 'or' operator as a "smart" Event-wise intersection of compatible series"
+
         Notes
         -----
         -Overlapping events will be combined via logical "or"
@@ -344,6 +346,7 @@ class EventSeries(list):
 
     def _resolve_events(self):
         """Sort and combine overlapping events
+
         Notes
         -----
         Could use as/from bools to accomplish, but this can be much more efficient
@@ -366,15 +369,18 @@ class EventSeries(list):
 
     def debounce(self, persistence_period: float, min_duration: float) -> EventSeries:
         """Debounce the given signal to remove short events and merge close ones
+
         Parameters
         ----------
         persistence_period : float
             merge any two events separated by less than this number (of samples)
         min_duration : float
             after merging close events, remove all events under this duration (in samples)
+
         Returns
         -------
         debounced : EventSeries
+
         References
         ----------
         Description of debouncing applied in engineering context: https://my.eng.utah.edu/~cs5780/debouncing.pdf
@@ -438,11 +444,13 @@ class EventSeries(list):
 
     def compute_agreement(self, other, normalize=False):
         """Computes an agreement matrix with the given EventSeries
+
         Parameters
         ----------
         other : EventSeries
         normalize : Optional(bool), default=False
             Normalize results rows by the number of events in the respective "reference" series
+
         Returns
         -------
         mat : pd.DataFrame
@@ -470,12 +478,14 @@ class EventSeries(list):
 
     def event_confusion_matrix(self, other, normalize=None, assimilate_events=True):
         """Generates a confusion matrix with the given EventSeries via Event-wise logic
+
         Parameters
         ----------
         other : EventSeries
         normalize : Optional(bool), default=False
         assimilate_events : Optional(bool), default=True
             If true, any overlapping Events from either series will be counted as one.
+
         Returns
         -------
         mat : pd.DataFrame
@@ -492,10 +502,12 @@ class EventSeries(list):
 
     def epoch_confusion_matrix(self, other, normalize=None):
         """Generates a confusion matrix with the given EventSeries epoch-by-epoch via boolean logic
+
         Parameters
         ----------
         other : EventSeries
         normalize : Optional(bool), default=False
+
         Returns
         -------
         mat : pd.DataFrame
@@ -555,6 +567,7 @@ class EventStack(dict):
 
     def __init__(self, event_stack: Dict[IntEnum, EventSeries]):
         """Ingests multiple concurrent EventSeries objects, each with a key
+
         Parameters
         ----------
         event_stack : Dict[IntEnum, EventSeries]
@@ -624,6 +637,7 @@ class EventStack(dict):
 
     def write_json(self, filepath):
         """Serializes and exports event data to a JSON file
+
         Notes
         -----
         We're not exporting any OverlapTolerances here...
@@ -668,6 +682,7 @@ class EventStack(dict):
 
 class EventClassSeries(EventStack):
     """A special type of EventStack wherein every timestamp is expected to have one and only one class
+
     Notes
     -----
     Useful for performing class confusion or agreement analytic, such as with hypnogram annotations
@@ -677,6 +692,7 @@ class EventClassSeries(EventStack):
         self, event_stack: Dict[IntEnum, EventSeries], missing_enum: Optional[IntEnum] = None
     ):
         """Ingests multiple concurrent EventSeries objects, each with a key
+
         Parameters
         ----------
         event_stack : Dict[IntEnum, EventSeries]
@@ -698,6 +714,7 @@ class EventClassSeries(EventStack):
     @classmethod
     def _is_continuous_and_flat(cls, event_stack: ValuesView[EventSeries]):
         """One and only one class active at each timestamp
+
         Returns
         -------
         is_continuous_and_flat : bool
@@ -735,11 +752,13 @@ class EventClassSeries(EventStack):
 
     def event_confusion_matrix(self, other, assimilate_events=True):
         """Generate a class-wise confusion matrix with 'other'
+
         Parameters
         ----------
         other : EventClassSeries
         assimilate_events : Optional(bool), default=True
             If true, any overlapping Events from either series will be counted as one.
+
         Returns
         -------
         mat : pd.DataFrame
@@ -765,10 +784,12 @@ class EventClassSeries(EventStack):
 
     def epoch_confusion_matrix(self, other, normalize=None):
         """Generates a confusion matrix with 'other', epoch-by-epoch via boolean logic
+
         Parameters
         ----------
         other : EventClassSeries
         normalize : Optional(bool), default=False
+
         Returns
         -------
         mat : pd.DataFrame
