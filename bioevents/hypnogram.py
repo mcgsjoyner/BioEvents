@@ -243,7 +243,7 @@ class Hypnogram(event_handling.EventClassSeries):
 
         References
         ----------
-        1. Takeda study using SOL as a primary endpoint: https://clinicaltrials.gov/ct2/show/NCT03522506
+        1. Clinical study using SOL as a primary endpoint: https://clinicaltrials.gov/ct2/show/NCT03522506
         """
         asleep = ~self[SleepStages.W]
 
@@ -355,8 +355,8 @@ class Hypnogram(event_handling.EventClassSeries):
         sol = self_in_minutes.sleep_onset_latency(n1_tolerance=0.0)
         waso = self_in_minutes.wake_after_sleep_onset()
 
-        # Although it might be safe to assume we have resampled 30-seconds epochs, the Takeda way is to
-        # round up partial epochs. For this reason, let's tolerate n1 episodes up to 2.5 30-s epochs.
+        # Although it might be safe to assume we have resampled 30-seconds epochs,
+        # let's tolerate n1 episodes up to 2.5 30-s epochs.
         sol_unequivocal = self_in_minutes.sleep_onset_latency(n1_tolerance=1.25)
 
         latency_persistent_sleep = self_in_minutes.latency_to_first_persistent_sleep()
