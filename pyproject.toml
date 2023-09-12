@@ -41,9 +41,9 @@ test = [
     "pytest>=7.4.2",
 ]
 dev = [
-    "tox-pdm>=0.7.0",
     "pip==19.2.3",
-    "bump2version==0.5.11",
+    "tox-pdm>=0.7.0",
+    "pdm-bump>=0.7.0",
     "wheel==0.33.6",
     "watchdog==0.9.0",
     "flake8==3.7.8",
@@ -51,4 +51,20 @@ dev = [
     "Sphinx==1.8.5",
     "twine==1.14.0",
     "black>=21.7b0",
+    "pre-commit>=3.4.0",
 ]
+
+[tool.black]
+line-length = 99
+target-version = ['py39', 'py310', 'py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+  \.toml
+  |\.sh
+  |\.git
+  |\.ini
+  |Dockerfile
+  |Jenkinfile
+)/
+'''
