@@ -10,7 +10,7 @@ from pydantic import (
     NonNegativeFloat,
     NonNegativeInt,
     confloat,
-    model_validator,
+    root_validator,
 )
 
 from bioevents import event_handling
@@ -89,7 +89,7 @@ class HypnogramReport(BaseModel, abc.ABC):
         ]
         return "\n".join(rows)
 
-    @model_validator(mode="before")
+    @root_validator(allow_reuse=True)
     def check_total_times_add_up(cls, values):
         rem = values.get("total_minutes_rem")
         n1 = values.get("total_minutes_n1")
@@ -105,7 +105,7 @@ class HypnogramReport(BaseModel, abc.ABC):
             raise ValueError("Total minutes in sleep doesn't match REM + NREM times.")
         return values
 
-    @model_validator(mode="before")
+    @root_validator(allow_reuse=True)
     def check_efficiencies(cls, values):
         rem = values.get("efficiency_rem")
         rem_time = values.get("total_minutes_rem")
@@ -118,7 +118,7 @@ class HypnogramReport(BaseModel, abc.ABC):
             raise ValueError("Sleep efficiency and total time don't match.")
         return values
 
-    @model_validator(mode="before")
+    @root_validator(allow_reuse=True)
     def check_awakenings(cls, values):
         total = values.get("event_count_wake")
         persistent = values.get("event_count_wake_persistent")
@@ -126,7 +126,7 @@ class HypnogramReport(BaseModel, abc.ABC):
             raise ValueError("Persistent event count is greater than total count!")
         return values
 
-    @model_validator(mode="before")
+    @root_validator(allow_reuse=True)
     def check_no_rem(cls, values):
         value_if_no_rem = {
             "efficiency_rem": 0,
