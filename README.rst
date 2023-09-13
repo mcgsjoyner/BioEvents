@@ -24,7 +24,8 @@ with a focus on biosensing applications.
 Features
 --------
 
-* TODO
+* Robust tooling for working with time series events.
+* A hypnogram class with visualization, manipulation, and characterization functionality
 
 Credits
 -------

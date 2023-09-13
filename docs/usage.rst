@@ -2,6 +2,8 @@
 Usage
 =====
 
-To use BioEvents in a project::
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
-    import bioevents
+   tutorial.ipynb

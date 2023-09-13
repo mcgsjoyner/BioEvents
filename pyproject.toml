@@ -5,14 +5,6 @@ description = "A lightweight library for managing and manipulating time series e
 authors = [
     { name = "McGregor Joyner", email = "mcgsjoyner@gmail.com" },
 ]
-dependencies = [
-    "setuptools>=68.2.0",
-    "matplotlib>=3.7.2",
-    "numpy>=1.24.0",
-    "pandas~=1.3.5",
-    "pydantic~=1.10.2",
-    "seaborn>=0.12.2",
-]
 requires-python = ">=3.9"
 readme = "README.rst"
 keywords = [
@@ -28,6 +20,14 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
 ]
+dependencies = [
+    "setuptools>=68.2.0",
+    "matplotlib>=3.7.2",
+    "numpy>=1.24.0",
+    "pandas~=1.3.5",
+    "pydantic~=1.10.2",
+    "seaborn>=0.12.2",
+]
 
 [project.license]
 text = "MIT license"
@@ -40,6 +40,9 @@ requires = [
     "pdm-backend",
 ]
 build-backend = "pdm.backend"
+
+[project.optional-dependencies]
+notebooks = ["jupyter>=1.0.0"]
 
 [tool.pdm.dev-dependencies]
 test = [
@@ -54,13 +57,14 @@ dev = [
     "watchdog>=0.9.0",
     "flake8>=3.7.8",
     "coverage>=4.5.4",
-    "Sphinx==7.2.4",
     "twine>=1.14.0",
     "black>=21.7b0",
     "pre-commit>=3.4.0",
 ]
-notebook = [
-    "jupyter>=1.0.0",
+doc = [
+    "Sphinx",
+    "myst_nb",
+    "sphinx-rtd-theme"
 ]
 
 [tool.black]

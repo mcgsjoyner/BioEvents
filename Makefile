@@ -85,8 +85,7 @@ dist: clean ## builds source and wheel package
 
 install: clean ## install using pdm (https://pdm.fming.dev/latest/) as package manager
 	pip install pdm
-	pdm install
-
+	pdm install --prod
 
 install-dev: clean ## install with dev dependencies
 	pip install pdm
