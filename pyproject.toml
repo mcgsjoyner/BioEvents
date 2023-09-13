@@ -50,7 +50,6 @@ test = [
 ]
 dev = [
     "pip>=19.2.3",
-    "pip-tools>=7.0",
     "tox-pdm>=0.7.0",
     "pdm-bump>=0.7.0",
     "wheel>=0.33.6",
