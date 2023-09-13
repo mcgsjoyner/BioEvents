@@ -29,6 +29,9 @@ dependencies = [
     "seaborn>=0.12.2",
 ]
 
+[project.optional-dependencies]
+notebooks = ["jupyter>=1.0.0"]
+
 [project.license]
 text = "MIT license"
 
@@ -40,9 +43,6 @@ requires = [
     "pdm-backend",
 ]
 build-backend = "pdm.backend"
-
-[project.optional-dependencies]
-notebooks = ["jupyter>=1.0.0"]
 
 [tool.pdm.dev-dependencies]
 test = [
@@ -61,9 +61,11 @@ dev = [
     "pre-commit>=3.4.0",
 ]
 doc = [
-    "Sphinx",
-    "myst_nb",
-    "sphinx-rtd-theme"
+    #"Sphinx==7.2.4",
+    "sphinx",
+    #"jupyter-sphinx",
+    "myst-nb",
+    "sphinx-rtd-theme",
 ]
 
 [tool.black]

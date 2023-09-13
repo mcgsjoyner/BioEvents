@@ -6,7 +6,7 @@ groups = ["default", "dev", "doc", "test"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:36b5fed0ab798f8279d565091f96442ed86c0b681627a18478c82452cf7ec829"
+content_hash = "sha256:cbd51b6b14adee695676074e038f9b00afba9ffd3c75bcf90edc1affbbab9561"
 
 [[package]]
 name = "alabaster"
