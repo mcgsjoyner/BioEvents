@@ -6,9 +6,9 @@ from enum import IntEnum
 from typing import Dict, Optional, ValuesView
 
 import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
 import numpy as np
 import pandas as pd
-import seaborn as sns
 from bioevents.colors import Colors
 
 DEFAULT_SAMPLING_RATE_HZ = 1.0
@@ -670,10 +670,10 @@ class EventStack(dict):
     def plot(self):
         """Stacks individual series onto the same plot"""
         n = max(self) + 1
-        palette = sns.dark_palette(Colors.BLUE1, n_colors=n)
+        cmap = LinearSegmentedColormap.from_list("", ["black", Colors.BLUE1], N=n)
         fig, ax = plt.subplots(figsize=(10, 0.5 * len(self)))
         for k, v in self.items():
-            v.plot(bottom=0, top=k, color=palette[k])
+            v.plot(bottom=0, top=k, color=cmap(k))
         ax.set_yticks([k.value for k in self])
         ax.set_yticklabels([k.name for k in self])
         ax.set_ylim(ax.get_ylim())
