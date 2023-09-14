@@ -50,7 +50,7 @@ The best way to send feedback is to file an issue at https://github.com/mcgsjoyn
 If you are proposing a feature:
 
 * Explain in detail how it would work.
-* Keep the scope as narrow as possible, to make it easier to implement.
+* Keep the scope as narrow as possible to make it easier to implement.
 * Remember that this is a volunteer-driven project, and that contributions
   are welcome :)
 
@@ -64,11 +64,10 @@ Ready to contribute? Here's how to set up `bioevents` for local development.
 
     $ git clone git@github.com:your_name_here/bioevents.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy::
 
-    $ mkvirtualenv bioevents
     $ cd bioevents/
-    $ python setup.py develop
+    $ make install-dev
 
 4. Create a branch for local development::
 
@@ -80,8 +79,7 @@ Ready to contribute? Here's how to set up `bioevents` for local development.
    tests, including testing other Python versions with tox::
 
     $ flake8 bioevents tests
-    $ python setup.py test or pytest
-    $ tox
+    $ make test-all
 
    To get flake8 and tox, just pip install them into your virtualenv.
 
@@ -102,9 +100,7 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
-3. The pull request should work for Python 3.5, 3.6, 3.7 and 3.8, and for PyPy. Check
-   https://travis-ci.com/mcgsjoyner/bioevents/pull_requests
-   and make sure that the tests pass for all supported Python versions.
+3. The pull request should work for Python 3.9, 3.10, and 3.11.
 
 Tips
 ----
@@ -121,8 +117,6 @@ A reminder for the maintainers on how to deploy.
 Make sure all your changes are committed (including an entry in HISTORY.rst).
 Then run::
 
-$ bump2version patch # possible: major / minor / patch
+$ make test-all
+$ pdm bump patch # see https://github.com/carstencodes/pdm-bump for version options
 $ git push
-$ git push --tags
-
-Travis will then deploy to PyPI if tests pass.

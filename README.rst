@@ -6,9 +6,6 @@ BioEvents
 .. image:: https://img.shields.io/pypi/v/bioevents.svg
         :target: https://pypi.python.org/pypi/bioevents
 
-.. image:: https://img.shields.io/travis/mcgsjoyner/bioevents.svg
-        :target: https://travis-ci.com/mcgsjoyner/bioevents
-
 .. image:: https://readthedocs.org/projects/bioevents/badge/?version=latest
         :target: https://bioevents.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
@@ -16,7 +13,8 @@ BioEvents
 
 
 
-A lightweight library for managing and manipulating time series events, with a focus on biosensing applications.
+A lightweight library for managing and manipulating time series events,
+with a focus on biosensing applications.
 
 
 * Free software: MIT license
@@ -26,7 +24,8 @@ A lightweight library for managing and manipulating time series events, with a f
 Features
 --------
 
-* TODO
+* Robust tooling for working with time series events.
+* A hypnogram class with visualization, manipulation, and characterization functionality
 
 Credits
 -------
