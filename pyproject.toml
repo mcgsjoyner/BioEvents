@@ -61,9 +61,7 @@ dev = [
     "pre-commit>=3.4.0",
 ]
 doc = [
-    #"Sphinx==7.2.4",
     "sphinx",
-    #"jupyter-sphinx",
     "myst-nb",
     "sphinx-rtd-theme",
 ]
