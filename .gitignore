@@ -74,6 +74,9 @@ target/
 # pyenv
 .python-version
 
+# pdm
+.pdm-python
+
 # celery beat schedule file
 celerybeat-schedule
 
@@ -104,3 +107,6 @@ ENV/
 # IDE settings
 .vscode/
 .idea/
+
+# apple
+.DS_Store

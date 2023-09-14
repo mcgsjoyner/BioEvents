@@ -78,12 +78,16 @@ servedocs: docs ## compile the docs watching for changes
 	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
 release: dist ## package and upload a release
-	twine upload dist/*
+	pdm publish
 
 dist: clean ## builds source and wheel package
-	python setup.py sdist
-	python setup.py bdist_wheel
-	ls -l dist
+	pdm build
 
-install: clean ## install the package to the active Python's site-packages
-	python setup.py install
+install: clean ## install using pdm (https://pdm.fming.dev/latest/) as package manager
+	pip install pdm
+	pdm sync --prod
+
+install-dev: clean ## install with dev dependencies
+	pip install pdm
+	pdm sync --dev
+	pre-commit install
